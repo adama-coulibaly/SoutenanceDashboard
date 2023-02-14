@@ -1,0 +1,137 @@
+<h2>Bienvenue sur my farmed</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit2()" #f="ngForm" novalidate>
+			<h4>Inscription</h4>
+			<!-- <div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div> -->
+			<!-- <span>ou utilisé ces services</span> -->
+			<input type="text" placeholder="Nom" required="true" name="nom" [(ngModel)]="form.nom"  minlength="3" maxlength="20"     #nom="ngModel" />
+			  <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+			  <div
+			  class="alertes"
+			  role="alert"
+			  *ngIf="nom.errors && f.submitted">
+			   Nom d'utilisateur est obligatoire !
+			</div>
+
+			<input type="text" placeholder="Prénom" required="true" name="prenom" [(ngModel)]="form.prenom"  minlength="3" maxlength="20"
+            #prenom="ngModel"/>
+			     <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+				 <div
+				 class="alertes"
+				 role="alert"
+				 *ngIf="prenom.errors && f.submitted">
+				 Prénom d'utilisateur est obligatoire !
+			   </div>
+
+
+			<input type="tel" placeholder="+223 70 44 67 11"  defaultCountryiso="ml" modalSearchPlaceholder="Rechercher ici" modalCloseText="fermer" modalTitle="Votre pays"
+			name="telph"  #telph="ngModel" [(ngModel)]="form.telph" maxlength="13"/>
+
+	
+
+
+			<input type="email" placeholder="Email" required="true" name="emails" [(ngModel)]="form.emails"  minlength="5" maxlength="45"
+            #emails="ngModel"/>
+			<div
+			class="alertes"
+			role="alert"
+			*ngIf="emails.errors && f.submitted">
+			Email est obligatoire !
+		  </div>
+
+
+			<input type="text" placeholder="adresse" required="true" name="adresse" [(ngModel)]="form.adresse"  minlength="3" maxlength="20"
+            #adresse="ngModel"/>
+			<div
+         class="alertes"
+         role="alert"
+         *ngIf="adresse.errors && f.submitted">
+          Veuillez donner une adresse 
+       </div>
+
+
+
+			<input type="password" placeholder="Password" required="true" name="passord" [(ngModel)]="form.password"  minlength="3" maxlength="20"
+            #passord="ngModel"/>
+			<div
+			class="alertes"
+			role="alert"
+			*ngIf="passord.errors && f.submitted">
+			 Mot de passe obligatoire
+		  </div>
+
+			<button>Inscription</button>
+		</form>
+	</div>
+
+
+
+
+
+	<div class="form-container sign-in-container">
+        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+            <div class="alert alert-danger errorMessages" *ngIf="f.submitted && isLoginFailed">
+                Mot de passe ou email incorrect 
+              </div>
+
+            <div class="monimage" align="center"> <img src="../../assets/img/logo1.png" width="30%" alt="" srcset=""> </div>
+			<h1>Connexion</h1>
+			<!-- <div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>ou utilisé</span> -->
+			<input type="email" placeholder="Telephone ou Email" ngModel autofocus   name="usernameOrEmail"
+            [(ngModel)]="form.usernameOrEmail"
+             required
+              #usernameOrEmail="ngModel" />
+               <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="usernameOrEmail.errors && f.submitted">
+           Nom d'utilisateur est obligatoire !
+        </div>
+
+
+
+			<input type="password" placeholder="Password" maxlength="20" minlength="6" ngModel name="password" [(ngModel)]="form.password" required minlength="6"  #password="ngModel"/>
+			 <!-- ============================ EN CAS D'ERREUR  DE MOT DE PASSE ========================================== -->
+             <div class="alert alert-danger "
+             role="alert"
+             *ngIf="password.errors && f.submitted">
+             <div *ngIf="password.errors">Mot de passe est obligatoire !</div>
+             <div *ngIf="password.errors">
+              6 caractères au minimum
+             </div>
+           </div>
+            
+            <a href="#">Mot de passe oublié ?</a>
+			<button>Connexion</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Revenir en arrière !</h1>
+				<p>Pour rester en contact avec nous, veuillez vous connecter avec vos informations personnelles
+                </p>
+				<button class="ghost" id="signIn">Connexion</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Salut l'ami !</h1>
+				<p>Entrez vos données personnelles et commencez votre voyage avec nous
+                </p>
+				<button class="ghost" id="signUp">Inscription</button>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,93 @@
+// @import "../acceuil/acceuil.component.scss";
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+      background: #04CF72;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  .carte{
+    background-color: #c6f8e2;
+  }
+
+
+  // ========================================= POUR LE TABLEAU
+  table {
+    width: 50%;
+    border-collapse: collapse;
+  }
+
+  .header_fixed {
+    max-height: 220vh;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #dddddd;
+  }
+
+  .header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: #04CF72;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  td img {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid #e6e7e8;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #edeef1;
+  }
+
+  tr:hover td {
+    color: #44b478;
+    cursor: pointer;
+    background-color: #ffffff;
+  }
+
+  td button {
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: #707070;
+    color: #e6e7e8;
+  }
+  button {
+    border: none;
+    padding: 7px ;
+    border-radius: 20px;
+    background-color: #707070;
+    color: #e6e7e8;
+  }

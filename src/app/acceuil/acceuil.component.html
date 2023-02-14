@@ -1,0 +1,34 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2" style="display: flex;justify-content: space-between;">Fermes
+
+    <div> 
+      <button class="boutonsAjouter"><span>Ajouter une ferme</span></button>
+    </div>
+  </div>
+  <div class="page__content shadow p-3 position-relative">
+    <div>
+
+      <div> 
+      
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col" *ngFor="let ferme of touteLesFerme">
+          <div class="card">
+            <img src="{{ferme.imageferme}}" class="card-img-top" alt="..." height="150px">
+            <div class="card-body">
+              <h5 class="card-title">{{ferme.nomferme}}</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+              <div align="center"><button class=""
+                  style="border: none;font-size: 25px;border-radius: 5px 5px; background-color: #04CF72;"><span
+                    style=" color: white;text-align: center;"><a [routerLink]="['/detail-ferme',ferme.idferme]">Voir plus</a> </span></button></div>
+                    <!-- [routerLink]="['/detail-ferme',ferme.idferme]" -->
+            </div>
+          </div>
+
+        </div>
+        </div>
+    </div>
+  </div>
+</div>

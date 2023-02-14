@@ -1,0 +1,41 @@
+<mat-toolbar>
+    <mat-toolbar-row class="justify-content-between">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="row mr-2 ml-auto">
+        <ul class="row m-0 align-items-center">
+          <li>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user mt-2 d-flex align-items-center"
+            >
+              <img src="{{user.avatar}}" alt="" class="user-image mr-1 p-2" />
+  
+              {{user.nom}}  {{user.nom}}
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon
+              >
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/connexion" >
+                <mat-icon (click)="logout()">exit_to_app</mat-icon>                    <img src="{{user.avatar}}}" alt="" srcset="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Logout
+              </button>
+            </mat-menu>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button> -->
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>

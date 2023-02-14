@@ -1,0 +1,147 @@
+.mat-icon {
+  vertical-align: middle;
+  margin-right: 1rem;
+  color: #FFFFFF !important;
+}
+
+.logo {
+  text-align: center;
+  padding: 2.6rem 1rem;
+
+  img {
+    width: 100px;
+  }
+}
+
+.mat-divider {
+  border-top-width: 2px;
+  border-color: white;
+}
+
+.mdc-list-item__primary-text {
+  color: beige;
+}
+
+mat-list-item>span {
+  color: #f7f8fa;
+}
+
+mat-list-item:hover {
+  background-color: #fff;
+}
+
+mat-list-item {
+  color: #f7f8fa !important;
+  text-decoration: none;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  height: 44px !important;
+  border-radius: 5px;
+  margin-bottom: 5px;
+
+  &:hover {
+    color: #f2f5f7 !important;
+
+    mat-icon,
+    span {
+      color: #04CF72 !important;
+    }
+  }
+
+  ::ng-deep {
+    .mat-list-item-content {
+      border-radius: 5px;
+      margin: 0 8px;
+
+      &:hover {
+        background: #fff !important;
+      }
+    }
+  }
+}
+
+mat-list-item span {
+  color: #FFFFFF !important;
+}
+
+.dashboardControleFacile {
+  background-color: #04CF72;
+  mat-icon,
+  span {
+    color: #fff !important;
+  }
+}
+
+// ============================================  les items de navigations
+mat-list-item{
+  mat-icon,
+  span {
+    color: #0378B0 !important;
+  }} 
+
+.list-item-active {
+  // background: blue !important;
+  // border-radius: 0 2rem 2rem 0;
+  // &:hover {
+  //   background: blue;
+  // }
+
+  color: #000 !important;
+
+  ::ng-deep {
+    .mat-list-item-content {
+      background: #c6f8e2 !important;
+
+      &:hover {
+        background: #fff !important;
+      }
+    }
+  }
+}
+
+h2 {
+  // color: #818cf8;
+  // font-size: 0.6rem;
+  font-weight: 600;
+  // letter-spacing: 1px;
+}
+
+.matSubheader {
+  text-align: center;
+}
+
+@media screen and (max-width: 940px) {
+
+  span {
+    visibility: hidden;
+  }
+
+  .logo {
+    text-align: center;
+    padding: 1rem 0;
+
+    img {
+      width: 90px;
+    }
+  }
+
+  .mat-icon {
+    // vertical-align: middle;
+    margin-right: 2rem;
+    //  width: 100px;
+    // height: 60px;
+    // font-size: 38PX;
+    color: #FFFFFF !important;
+  }
+
+  mat-list-item {
+    text-align: center;
+  }
+
+  mat-list-item:hover {
+    background-color: #fff;
+  }
+
+}

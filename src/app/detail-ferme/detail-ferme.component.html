@@ -1,0 +1,192 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2" style="display: flex;justify-content: space-between;"><a
+            routerLink="/acceuil">
+            <i class="fa fa-arrow-circle-left" style="color: white;"></i>
+        </a>
+        <div>
+            <h3><span>{{info.nomferme}}</span></h3>
+        </div>
+
+    </div>
+
+    <div class="page__content shadow p-3 position-relative">
+
+
+        <div class="card mb-3" style="max-width: 850px;margin: 10px auto;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{info.imageferme}}" alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div>
+                            <div class="sectionDisplay">
+                                <div class="nameP">Ferme</div>
+                                <div class="valeurP">{{info.nomferme}}</div>
+                            </div>
+                            <div class="sectionDisplay">
+                                <div class="nameP">Propiétaire</div>
+                                <div class="valeurP">{{info.user.nom}} {{info.user.prenom}}</div>
+                            </div>
+                            <div class="sectionDisplay">
+                                <div class="nameP">Adresse</div>
+                                <div class="valeurP">{{info.adresseferme}}</div>
+                            </div>
+                            <div class="sectionDisplay">
+                                <div class="nameP">Taille</div>
+                                <div class="valeurP">{{info.taille}}</div>
+                            </div>
+                            <div class="sectionDisplay">
+                                <div class="nameP">Etat</div>
+                                <div class="valeurP" *ngIf="info.etat == true ">Activé</div>
+                                <div class="valeurP" *ngIf="info.etat == false ">Désactivé</div>
+                            </div>
+                        </div>
+
+
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ==================================== ACCORDION ======================================================== -->
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Production
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+
+                        <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
+                        <div class="row row-cols-1 row-cols-md-4 g-4" style=" display: flex;" *ngIf="taille != 0 ">
+                            <div class="col" *ngFor="let product of mesFIltres">
+                                <div class="card">
+                                    <div class="titreProduction">
+                                        <div class="nomTitre">
+                                            <p>{{product.typeproduction.nomtype}}</p>
+                                        </div>
+                                        <div class="status">
+                                            <p class="p1" *ngIf="product.status=='ENCOURS'">en cours</p>
+                                            <p class="p2" *ngIf="product.status=='AVENIR'">a venir</p>
+                                            <p class="p3" *ngIf="product.status=='TERMINER'">terminer</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="contenu">
+                                        <div class="inline2">
+                                           <div style="font-size: 17px;"><span>Date d'entrée</span></div>
+                                        </div>
+                                        <div class="timer">
+                                            <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="contenu">
+                                        <div class="inline2">
+                                            <div style="margin-top: 1% !important;">
+                                                <span>
+                                                    <!-- <ion-icon name="stopwatch-outline"></ion-icon> -->
+                                                </span>
+                                            </div>
+                                            <div style="font-size: 17px;"><span>Date de sortie</span></div>
+                                        </div>
+                                        <div class="timer">
+                                            <p>{{product.datesortie | date: 'dd/MM/yy'}} </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="contenu">
+                                        <div style="font-size: 17px;">Quantité</div>
+                                        <div class="timer">
+                                            <p>{{product.quantite}}</p>
+                                        </div>
+                                    </div>
+                                    <div align="center">
+                                        <!-- <ion-button (click)="openModal(product.idproduction)">Détails</ion-button> -->
+                                    </div>
+                                </div>
+                                <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
+                                <div class="ion-text-center" id="pasDeProductions" *ngIf="taille == 0 ">
+                                    <P>Vous n'avez pas de production encore</P>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Stocks
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+
+                        <div class="row row-cols-1 row-cols-md-4 g-4" *ngIf="produitTotal != 0">
+                            <div class="col" *ngFor="let prod of produits">
+                              <div *ngIf="etatsProds" class="card ferme1">
+                                <div class="cardeH" style="height: 100px;text-align: center;">
+                                  <img src="{{prod.phtoproduit}}" style="cursor: pointer;" expand="block" (click)="setOpen(true)" height="100px">
+                                </div>
+                                <p style="text-align: center;">{{prod.nomproduit}}</p>
+
+                                <div class="contenu">
+                                    <div class="inline2">
+                                       <div style="font-size: 17px;"><span>Stocks: </span></div>
+                                    </div>
+                                    <div class="timer" style="font-size: 17px;">
+                                        <span>{{prod.quantiteVente}}</span>
+                                    </div>
+                                </div>
+                                <div class="iconsProduits">
+                                  <i class="create" name="create-outline"></i>
+                                  <span style="font-size: 15px;color: black; text-align: center;background: #04CF72;margin: 2%;">En vente</span>
+                                  <i class="delete" name="trash-outline" (click)="supprimerProd(prod.idproduit)"></i>
+                                </div>
+                            </div>
+                            </div>
+                          </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Ventes
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

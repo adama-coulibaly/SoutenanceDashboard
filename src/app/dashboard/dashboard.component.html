@@ -1,0 +1,106 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+    <div class="page__content shadow p-3 position-relative">
+     
+          <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+          <div class="col-sm-6 col-xl-3">
+            <div class="carte rounded d-flex align-items-center  p-4">
+              <i class='bx bxs-user fa-1x'></i>
+              <div class="ms-3">
+                <p class="mb-2">Utilisateur total</p>
+                <h6 class="mb-0">{{nbre}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="carte rounded d-flex align-items-center  p-4">
+              <i class='bx bxs-home fa-1x'></i>
+              <div class="ms-3">
+                <p class="mb-2">Total des fermes</p>
+                <h6 class="mb-0">{{nbreFerme}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="carte rounded d-flex align-items-center  p-4">
+              <i class='bx bxs-card fa-1x'></i>
+              <div class="ms-3">
+                <p class="mb-2">Total de produit</p>
+                <h6 class="mb-0">{{nbreProduits}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="carte rounded d-flex align-items-center  p-4">
+              <i class='bx bxs-chart fa-1x '></i>
+              <div class="ms-3">
+                <p class="mb-2">Ventes totales</p>
+                <h6 class="mb-0">{{nbreVente}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 py-2">
+        <div class="col-sm-12 ">
+            <div class="bg-light  rounded p-4">
+                <div class="row">
+                    <div class="col-md-8 ">
+                        <h3>Les utilisateurs</h3>
+                    </div>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="col-md-4">
+                              <!-- <i class='bx bx-search icon fa-2x py-1'></i> -->
+                            <input
+                                class="form-control border-0 border-2 border-start border-end border-alert"
+                                type="text" placeholder="rechercher"  [(ngModel)]="filterTerm" >
+                    </div>
+                </div>
+                <div class="chart-container py-2">
+                    <div class="header_fixed py-2">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Photo</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Email</th>
+                                    <th>Telephone</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let users of mesUsers | filter:filterTerm | paginate: { itemsPerPage: 10, currentPage: page },  let i = index ">
+                                    <td>{{i+1}}</td>
+                                    <td><img src="{{users.avatar}}" alt=""></td>
+                                    <td>{{users.nom}}</td>
+                                    <td>{{users.prenopm}}</td>
+                                    <td>{{users.email}}</td>
+                                    <td>{{users.username}}</td>
+                                    <td *ngIf="users.roles[0].name == 'ROLE_SUPER_ADMIN' ">Super admin</td>
+                                    <td *ngIf="users.roles[0].name == 'ROLE_USER' ">Utilisateur</td>
+                                    <td *ngIf="users.roles[0].name == 'ROLE_ADMIN' ">Admin</td>
+                                    <td><button>Banir</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pagination-controls style="font-size: .5em;" (pageChange)="page =$event" nextLabel="Suivant" previousLabel="Précedent"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    </div>
+  </div>
+
+  <style>
+  p{
+    font-size: .5em;
+  }
+</style>

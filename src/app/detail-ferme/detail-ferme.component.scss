@@ -1,0 +1,132 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+      background: #04CF72;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  p{
+    font-size: 12px;
+  }
+
+  .boutonsAjouter{
+    border: 1px solid white;border-radius: 5px;font-size: 20px;
+    background: #fff;
+  }
+  .boutonsAjouter:hover{
+    background: #04CF72;
+    color: white;
+    font-size: 22px;
+  } 
+// ==============================
+.sectionDisplay{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sectionDisplay .nameP{
+  font-size: 20px;
+  font-weight: bold;
+}
+.sectionDisplay .valeurP{
+  font-size: 20px;
+  // font-weight: bold;
+}
+
+
+// ========================================
+.titreProduction {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3%;
+}
+
+.titreProduction .nomTitre {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.titreProduction .status .p1 {
+  // background-color: rgb(221, 212, 212);
+  background-color: #04CF72;
+  color: white;
+  padding: 4px;
+  border-radius: 10px;
+}
+.titreProduction .status .p2 {
+background-color: rgb(221, 212, 212);
+// background-color: #04CF72;
+color: white;
+padding: 4px;
+border-radius: 10px;
+}
+.titreProduction .status .p3 {
+// background-color: rgb(221, 212, 212);
+background-color: red;
+color: white;
+padding: 4px;
+border-radius: 10px;
+}
+
+.description .inline,.inline {
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  font-size: 120%;
+  gap: 5%;
+
+}
+.inline2 {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  font-size: 120%;
+  gap: 2%;
+
+}
+
+.contenu {
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contenu .timer p {
+  align-items: center;
+}
+.monp{
+  display: inline-block;
+}
+.contenu ion-icon {
+  font-size: 20px;
+}
+
+.productions ion-title {
+  margin: 2%;
+}
