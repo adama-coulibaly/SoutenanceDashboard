@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -20,6 +21,7 @@ export class DetailFermeComponent implements OnInit {
   isModalOpen = false;
   etatsProds: any;
   produitTotal: any;
+  mesHisto: any;
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
@@ -36,6 +38,7 @@ export class DetailFermeComponent implements OnInit {
 
      this.reloadProduction()
      this.reloadPage()
+     this.Historique()
   }
 
 // ========================================================= LES PRODUCTIONS
@@ -76,4 +79,15 @@ supprimerProd(idproduit:any){
   })
 
 }
+
+// ======================================================== HISTORIQUE DES VENTES PAR FERMES
+
+Historique(){
+  this.idferme = this.route.snapshot.params["idferme"];
+  this.fermeService.historiqueDesVentesParFermes(this.idferme).subscribe(data =>{
+    this.mesHisto = data
+   console.log('Histo '+ JSON.stringify(this.mesHisto))
+  })
+}
+
 }

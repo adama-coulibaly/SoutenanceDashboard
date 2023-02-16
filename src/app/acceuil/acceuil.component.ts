@@ -12,6 +12,8 @@ export class AcceuilComponent implements OnInit{
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
+
+  filterTerm:any
   touteLesFerme: any;
   constructor(private fermeService:FermeService,){}
   ngOnInit() {

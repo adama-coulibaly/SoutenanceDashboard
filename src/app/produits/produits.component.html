@@ -1,0 +1,45 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2" style="display: flex;justify-content: space-between;align-items: center;">
+
+        <div>
+            Produits
+        </div>
+        <div class="col-md-4">
+            <!-- <i class='bx bx-search icon fa-2x py-1'></i>  -->
+            <input class="form-control border-0 border-2 border-start border-end border-alert" type="text"
+                placeholder="rechercher" [(ngModel)]="filterTerm">
+        </div>
+    </div>
+    <div class="page__content shadow p-3 position-relative">
+        <div>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <div class="col" *ngFor="let prod of mesprod | filter:filterTerm">
+                    <div class="card">
+                        <img src="{{prod.phtoproduit}}" class="card-img-top" alt="..." height="150px">
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{prod.nomproduit}}</h5>
+                            <div style="display: flex;justify-content: space-between;">
+                                <div style="font-size: 15px;">Prix</div>
+                                <div style="font-size: 15px;">{{prod.prix}} Fcafa</div>
+                            </div>
+
+                            <div style="display: flex;justify-content: space-between;">
+                                <div style="font-size: 15px;">Stocks</div>
+                                <div style="font-size: 15px;">{{prod.quantiteVente}}</div>
+                            </div>
+
+
+                            <div align="center" style="display: flex;justify-content: space-between;">
+                                <div style="font-size: 15px;font-weight: bold;">Ferme:</div>
+                                <div style="font-size: 15px; background: #04CF72; padding: 2%;color: white; border-radius: 10px;align-items: center;">{{prod.fermes[0].nomferme}}</div>
+                            </div>
+                            <!-- [routerLink]="['/detail-ferme',ferme.idferme]" -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

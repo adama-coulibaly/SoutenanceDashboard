@@ -58,7 +58,7 @@
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne">
-                        Production
+                        Production ({{mesFIltres.length}})
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
@@ -83,10 +83,10 @@
 
                                     <div class="contenu">
                                         <div class="inline2">
-                                           <div style="font-size: 17px;"><span>Date d'entrée</span></div>
+                                            <div style="font-size: 17px;"><span>Date d'entrée</span></div>
                                         </div>
-                                        <div class="timer">
-                                            <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
+                                        <div class="timer" style="font-size: 17px;">
+                                            <span>{{product.dateentrer | date: 'dd/MM/yy'}} </span>
                                         </div>
                                     </div>
 
@@ -94,21 +94,21 @@
                                         <div class="inline2">
                                             <div style="margin-top: 1% !important;">
                                                 <span>
-                                                    <!-- <ion-icon name="stopwatch-outline"></ion-icon> -->
+                                                    <!-- <i name="stopwatch-outline"></i> -->
                                                 </span>
                                             </div>
                                             <div style="font-size: 17px;"><span>Date de sortie</span></div>
                                         </div>
-                                        <div class="timer">
-                                            <p>{{product.datesortie | date: 'dd/MM/yy'}} </p>
+                                        <div class="timer" style="font-size: 17px;">
+                                            <span>{{product.datesortie | date: 'dd/MM/yy'}} </span>
                                         </div>
                                     </div>
 
 
                                     <div class="contenu">
                                         <div style="font-size: 17px;">Quantité</div>
-                                        <div class="timer">
-                                            <p>{{product.quantite}}</p>
+                                        <div class="timer" style="font-size: 17px;">
+                                            <span>{{product.quantite}}</span>
                                         </div>
                                     </div>
                                     <div align="center">
@@ -131,7 +131,7 @@
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseTwo">
-                        Stocks
+                        Stocks ({{produits.length}})
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
@@ -140,28 +140,32 @@
 
                         <div class="row row-cols-1 row-cols-md-4 g-4" *ngIf="produitTotal != 0">
                             <div class="col" *ngFor="let prod of produits">
-                              <div *ngIf="etatsProds" class="card ferme1">
-                                <div class="cardeH" style="height: 100px;text-align: center;">
-                                  <img src="{{prod.phtoproduit}}" style="cursor: pointer;" expand="block" (click)="setOpen(true)" height="100px">
-                                </div>
-                                <p style="text-align: center;">{{prod.nomproduit}}</p>
+                                <div *ngIf="etatsProds" class="card ferme1">
+                                    <div class="cardeH" style="height: 100px;text-align: center;">
+                                        <img src="{{prod.phtoproduit}}" style="cursor: pointer;" expand="block"
+                                            (click)="setOpen(true)" height="100px">
+                                    </div>
+                                    <p style="text-align: center;">{{prod.nomproduit}}</p>
 
-                                <div class="contenu">
-                                    <div class="inline2">
-                                       <div style="font-size: 17px;"><span>Stocks: </span></div>
+                                    <div class="contenu">
+                                        <div class="inline2">
+                                            <div style="font-size: 17px;"><span>Stocks: </span></div>
+                                        </div>
+                                        <div class="timer" style="font-size: 17px;">
+                                            <span>{{prod.quantiteVente}}</span>
+                                        </div>
                                     </div>
-                                    <div class="timer" style="font-size: 17px;">
-                                        <span>{{prod.quantiteVente}}</span>
+                                    <div class="iconsProduits">
+                                        <i class="create" name="create-outline"></i>
+                                        <span
+                                            style="font-size: 15px;color: black; text-align: center;background: #04CF72;margin: 2%;padding: 2%;color: white;">En
+                                            vente</span>
+                                        <i class="delete" name="trash-outline"
+                                            (click)="supprimerProd(prod.idproduit)"></i>
                                     </div>
                                 </div>
-                                <div class="iconsProduits">
-                                  <i class="create" name="create-outline"></i>
-                                  <span style="font-size: 15px;color: black; text-align: center;background: #04CF72;margin: 2%;">En vente</span>
-                                  <i class="delete" name="trash-outline" (click)="supprimerProd(prod.idproduit)"></i>
-                                </div>
                             </div>
-                            </div>
-                          </div>
+                        </div>
 
                     </div>
                 </div>
@@ -171,18 +175,56 @@
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapseThree">
-                        Ventes
+                        Ventes ({{mesHisto.length}})
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
-                        does limit overflow.
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col" *ngFor="let historique of mesHisto.slice().reverse()">
+                                <div class="card" style="padding: 2%;">
+
+                                <div style="display: flex;justify-content: space-between;">
+                                    <div style="font-size: 15px;"> le {{historique.datevente | date: 'dd/MM/yy, à HH:mm'}}</div>
+                                    <div style="font-size: 15px;">{{historique.nomclient}} {{historique.prenomclient}}</div>
+                                </div>
+                                <!-- <div class=""> -->
+                                    <!-- <p>Vente de 200 Poussins à 700 Fcfa</p> -->
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <div style="font-size: 15px;">Produits:</div>
+                                        <div style="font-size: 15px;">{{historique.nomproduit}}</div>
+                                    </div>
+
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <div style="font-size: 15px;">Quantité</div>
+                                        <div style="font-size: 15px;">{{historique.quantite}}</div>
+                                    </div>
+
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <div style="font-size: 15px;">Prix unitaire:</div>
+                                        <div style="font-size: 15px;">{{historique.prixunitaire}} Fcfa</div>
+                                    </div>
+
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <div style="font-size: 15px;">Montant total:</div>
+                                        <div style="font-size: 15px;">{{historique.montanttotal}} Fcfa</div>
+                                    </div>
+<!-- 
+                                    <hr>
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <div style="font-size: 17px;">Supprimer</div>
+                                        <div style="font-size: 17px;"><i name="trash" style="color: red;font-size: 20px;cursor: pointer;"></i>
+                                        </div>
+                                    </div> -->
+
+                                <!-- </div> -->
+                            </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>

@@ -24,6 +24,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailFermeComponent } from './detail-ferme/detail-ferme.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { ProduitsComponent } from './produits/produits.component';
+import { FormationComponent } from './formation/formation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
     HeaderComponent,
     PrincipalComponent,
     ConnexionInscriptionComponent,
-    DetailFermeComponent
+    DetailFermeComponent,
+    ProduitsComponent,
+    FormationComponent
     
   ],
   imports: [

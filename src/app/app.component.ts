@@ -20,7 +20,6 @@ export class AppComponent implements OnInit{
     }
     else{
       this.route.navigateByUrl("connexion-inscription")
-      // this.route.navigateByUrl("principale")
 
     }
 
