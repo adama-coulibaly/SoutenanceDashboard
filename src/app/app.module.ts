@@ -26,6 +26,8 @@ import { DetailFermeComponent } from './detail-ferme/detail-ferme.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { ProduitsComponent } from './produits/produits.component';
 import { FormationComponent } from './formation/formation.component';
+import { ModalModule } from 'ngb-modal';
+import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,9 @@ import { FormationComponent } from './formation/formation.component';
      NgxPaginationModule,
      NgxIntlTelInputModule,
      FormsModule,
+     ModalModule,
+     NgbModalModule
+
      
     //  PopoverController
   ],
