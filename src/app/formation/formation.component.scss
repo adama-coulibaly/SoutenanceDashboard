@@ -1,0 +1,41 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+      background: #04CF72;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  p{
+    font-size: 12px;
+  }
+
+  .boutonsAjouter{
+    border: 1px solid white;border-radius: 5px;font-size: 20px;
+    background: #fff;
+  }
+  .boutonsAjouter:hover{
+    background: #04CF72;
+    color: white;
+    font-size: 22px;
+  } 
+
+  .alertes{
+    color: rgb(252, 61, 61);
+  }

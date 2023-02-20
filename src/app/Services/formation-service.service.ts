@@ -42,7 +42,8 @@ export class FormationServiceService {
     data.append("user",id);
     data.append("urlformation",urlformation);
     data.append("description",description);
-    data.append("titreforlation",titreforlation);
+    data.append("titreforlation",titreforlation); 
+    data.append("dureformation",dureformation);
     data.append("file",file);
      return this.http.post("http://localhost:8080/formation/ajouter",data)
   }

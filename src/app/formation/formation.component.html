@@ -1,3 +1,138 @@
-<p>
-  formation works!
-</p>
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2" style="display: flex;justify-content: space-between;align-items: center;">
+
+    <div>
+      Formations
+    </div>
+    <div class="col-md-4">
+      <!-- <i class='bx bx-search icon fa-2x py-1'></i>  -->
+      <input class="form-control border-0 border-2 border-start border-end border-alert" type="text"
+        placeholder="rechercher" [(ngModel)]="filterTerm">
+    </div>
+  </div>
+  <div class="page__content shadow p-3 position-relative">
+
+    <div class="sectionHB py-4" style="display: flex;flex-direction: row;justify-content: space-between;">
+      <div>
+        <select class="form-control" [(ngModel)]="form.choix" (change)="onSelect()">
+          <option value="toutelesformations">Toute les formatons</option>
+          <option value="active">Activé</option>
+          <option value="desactive">Desactivé</option>
+        </select>
+      </div>
+
+      <div style="font-size: 20px; color: white;">
+        <button class="btn-success" style="border-radius: 5px;" (click)="open(content)">Ajouter une formation</button>
+      </div>
+    </div>
+
+
+
+    <div>
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col" *ngFor="let formation of mesformation | filter: filterTerm">
+          <div class="card">
+            <img src="{{formation.photoformation}}" class="card-img-top" alt="..." height="150px">
+
+            <div class="card-body">
+              <h5 class="card-title" style="font-size: 15px;">{{formation.titreformation}}</h5>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="font-size: 15px;">Date poste : </div>
+                <div style="font-size: 15px;">{{formation.datedeposte |date: 'dd/MM/yy'}}</div>
+              </div>
+
+              <!-- <div style="display: flex;justify-content: space-between;">
+                          <div style="font-size: 15px;">Stocks</div>
+                          <div style="font-size: 15px;">{{formation.quantiteVente}}</div>
+                      </div> -->
+
+
+              <div align="center" style="display: flex;justify-content: space-between;">
+                <div style="color: #04CF72; cursor: pointer;"> <mat-icon> border_color</mat-icon>
+                </div>
+                <div style="color: rgb(248, 69, 69); cursor: pointer;"><mat-icon
+                    (click)="supprimer(formation.idformation)">delete</mat-icon>
+                </div>
+              </div>
+              <!-- [routerLink]="['/detail-ferme',ferme.idferme]" -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<ng-template #content let-modal [isOpen]="isModalOpen3" backdrop-dismiss="false">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter une formation</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="row">
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="text" placeholder="Titre de la formation" required="true" name="titreforlation"
+            [(ngModel)]="form.titreforlation" minlength="5" maxlength="50" #titreforlation="ngModel"
+            class="form-control" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="titreforlation.errors && f.submitted">
+            Veuillez donner un titre !
+          </div>
+        </div>
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="text" placeholder="Lien youtube" required="true" name="urlformation"
+            [(ngModel)]="form.urlformation" minlength="5" #urlformation="ngModel" class="form-control" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="urlformation.errors && f.submitted">
+            Veuillez donner un lien !
+          </div>
+        </div>
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="text" placeholder="Durée de la formation" required="true" name="dureformation"
+            [(ngModel)]="form.dureformation" minlength="5" maxlength="50" #dureformation="ngModel"
+            class="form-control" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="dureformation.errors && f.submitted">
+            Durée incorrect
+          </div>
+        </div>
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="file" placeholder="Lien youtube" required="true" name="file" [(ngModel)]="form.file"
+            #file="ngModel" class="form-control" (change)="fileChangm($event)" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="file.errors && f.submitted">
+            Veuillez donner une image !
+          </div>
+        </div>
+
+        <div class="">
+          <div class="col-md-12 p-3">
+            <textarea class="form-control" id="description" required="true" min="15" name="description"
+              [(ngModel)]="form.description" #description="ngModel" cols="30" rows="5"></textarea>
+            <div class="alertes" role="alert" *ngIf="description.errors && f.submitted">
+              Veuillez donner une decription !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex;justify-content: end;">
+        <!-- <div> <button class="btn-danger"  >Annuler</button></div> -->
+        <div> <button class="btn-success">Ajouter</button></div>
+      </div>
+    </form>
+    <!-- (click)="modal.close()"  -->
+
+  </div>
+</ng-template>
