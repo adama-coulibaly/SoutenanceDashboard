@@ -32,7 +32,18 @@
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col" *ngFor="let formation of mesformation | filter: filterTerm">
           <div class="card">
-            <img src="{{formation.photoformation}}" class="card-img-top" alt="..." height="150px">
+            <img src="{{formation.photoformation}}" class="card-img-top" alt="..." height="150px">   
+
+           
+
+            <form name="form" (ngSubmit)="getFormID(formation.idformation)">
+              <label for="file"> <span> <mat-icon style="font-size: 25px; color: #04CF72; position: absolute; top: 100px;right: 15px;cursor: pointer;">camera_enhance</mat-icon></span></label>
+              <input id="file" type="file"   name="file" [(ngModel)]="form.file"
+              #file="ngModel" class="form-control" hidden (change)="fileChangm2($event)">
+
+              <button class="btn-success" style="font-size: 15px;">Valider</button>
+            </form>
+            <!-- <input type="text" value="{{formation.idformation}}"> -->
 
             <div class="card-body">
               <h5 class="card-title" style="font-size: 15px;">{{formation.titreformation}}</h5>
@@ -48,7 +59,7 @@
 
 
               <div align="center" style="display: flex;justify-content: space-between;">
-                <div style="color: #04CF72; cursor: pointer;"> <mat-icon> border_color</mat-icon>
+                <div style="color: #04CF72; cursor: pointer;"> <mat-icon (click)="open2(content1,formation.idformation)"> border_color</mat-icon>
                 </div>
                 <div style="color: rgb(248, 69, 69); cursor: pointer;"><mat-icon
                     (click)="supprimer(formation.idformation)">delete</mat-icon>
@@ -80,11 +91,11 @@
       <div class="row">
         <div class="col-md-6 py-2">
           <!-- <span>ou utilisé ces services</span> -->
-          <input type="text" placeholder="Titre de la formation" required="true" name="titreforlation"
-            [(ngModel)]="form.titreforlation" minlength="5" maxlength="50" #titreforlation="ngModel"
+          <input type="text" placeholder="Titre de la formation" required="true" name="titreformation"
+            [(ngModel)]="form.titreformation" minlength="5" maxlength="50" #titreformation="ngModel"
             class="form-control" />
           <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
-          <div class="alertes" role="alert" *ngIf="titreforlation.errors && f.submitted">
+          <div class="alertes" role="alert" *ngIf="titreformation.errors && f.submitted">
             Veuillez donner un titre !
           </div>
         </div>
@@ -133,6 +144,79 @@
       </div>
     </form>
     <!-- (click)="modal.close()"  -->
+
+  </div>
+</ng-template>
+
+<!-- ================================================================================================================= -->
+
+<ng-template #content1 let-modal [isOpen]="isModalOpen3" >
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifier une formation</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+
+    <form  name="form" (ngSubmit)="Modifier(idFor)" #f="ngForm">
+
+      <div class="row">
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="text" placeholder="Titre de la formation"  name="titreformations2"
+            [(ngModel)]="form.titreformations2"  [(ngModel)]="monTitre" minlength="5" maxlength="50" #titreformations2="ngModel"
+            class="form-control" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="titreformations2.errors && f.submitted">
+            Veuillez donner un titre !
+          </div>
+        </div>
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="text" placeholder="Lien youtube" name="urlformation2"
+            [(ngModel)]="form.urlformation2"  [(ngModel)]="monUrl" minlength="5" #urlformation2="ngModel" class="form-control" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="urlformation2.errors && f.submitted">
+            Veuillez donner un lien !
+          </div>
+        </div>
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <input type="text" placeholder="Durée de la formation"  name="dureformation2"
+            [(ngModel)]="form.dureformation2"  [(ngModel)]="monDuree " minlength="5" maxlength="50" #dureformation2="ngModel"
+            class="form-control" />
+          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+          <div class="alertes" role="alert" *ngIf="dureformation2.errors && f.submitted">
+            Durée incorrect
+          </div>
+        </div>
+        <div class="col-md-6 py-2">
+          <!-- <span>ou utilisé ces services</span> -->
+          <div>
+            <input class="form-control" type="text" name="etat"
+            [(ngModel)]="form.etat"  [(ngModel)]="monEtat" #etat="ngModel" cols="30" rows="5">
+        </div>
+        </div>
+
+
+      
+
+
+
+        <div class="">
+          <div class="col-md-12 p-3">
+            <textarea class="form-control" id="description"  min="15" name="description2"
+              [(ngModel)]="form.description2"  [(ngModel)]="maDesc" #description2="ngModel" cols="30" rows="5"></textarea>
+            <div class="alertes" role="alert" *ngIf="description2.errors && f.submitted">
+              Veuillez donner une decription !
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex;justify-content: end;">
+        <div> <button class="btn-success" (click)="modal.dismiss('Cross click')">Modifier</button></div>
+      </div>
+    </form>
 
   </div>
 </ng-template>

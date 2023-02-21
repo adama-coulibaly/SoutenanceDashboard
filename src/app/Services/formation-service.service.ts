@@ -48,9 +48,30 @@ export class FormationServiceService {
      return this.http.post("http://localhost:8080/formation/ajouter",data)
   }
 
+
+    // ================================= AJOUTER UNE FORMATION ==================================
+  modifierFormation(idformation:any,etat:any,urlformation:any,description:any,dureformation:any,titreforlation:any):Observable<any>{
+      let data = new FormData();   
+      // data.append("file",file);
+      data.append("etat",etat);
+      data.append("urlformation",urlformation);
+      data.append("description",description);
+      data.append("titreforlation",titreforlation); 
+      data.append("dureformation",dureformation);
+      // data.append("file",file);
+       return this.http.put(`http://localhost:8080/formation/modifier/${idformation}`,data)
+    }
+
   // ======================================= SUPPRIMER UNE FORMATION  =====================================
 supprimerFormation(idformation:any):Observable<any>{
   return this.http.delete(`http://localhost:8080/formation/supprimer/${idformation}`)
+}
+
+updatePhoto(idformation:any,file:any):Observable<any>{
+  console.log("Service "+file)
+  let data =new FormData();
+  data.append("file",file)
+  return this.http.patch<any>(`http://localhost:8080/formation/modifierPhoto/${idformation}`,data)
 }
 
 }

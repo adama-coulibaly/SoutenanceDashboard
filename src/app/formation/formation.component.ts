@@ -20,16 +20,40 @@ export class FormationComponent implements OnInit {
   isLoggedIn = false
   file: any;
   user: any;
+  uneFormation: any;
+  maPhoto: any;
+  monTitre: any;
+  maDesc: any;
+  monDuree: any;
+  monUrl: any;
+  monEtat: any;
+  idFor: any;
+  idformation: any;
+  file2: any;
+  idformat:any
+
   fileChangm(event: any) {
     this.file = event.target.files[0]
     console.log(this.file)
     }
+
+    fileChangm2(event:any) {
+      // console.log("Mon ID = "+idformat)
+      this.file2 = event.target.files[0]
+     this.serviceFormation.updatePhoto(this.idformat, this.file2).subscribe(data=>{  this.mesformations();})
+     this.mesformations();
+      }
+
   mesformation: any;
   constructor(private serviceFormation:FormationServiceService,private modalService: NgbModal,private tokenStorage:TokenStorageService) { }
 
   ngOnInit() {
     this.onSelect();
     // this.mesformations()
+  }
+// ===================================== MODIFIER UNE IMAGES
+  getFormID(idformat:any){
+      this.serviceFormation.updatePhoto(idformat, this.file2).subscribe(data=>{  this.mesformations();})
   }
 // ================================FAIRE LE FILTRAGE ICI
   onSelect(){
@@ -85,20 +109,17 @@ export class FormationComponent implements OnInit {
     }
   })
 
-    }})
-
-
- 
-
+    }}
+    )
   }
 
   // ==================
   onSubmit(){
     this.user = this.tokenStorage.getUser();
 
-    const {urlformation, dureformation, description, titreforlation,} = this.form;
+    const {urlformation, dureformation, description, titreformation,} = this.form;
 
-    this.serviceFormation.ajouterFormation(this.user.id,urlformation,description,dureformation,titreforlation, this.file,).subscribe(data=>{
+    this.serviceFormation.ajouterFormation(this.user.id,urlformation,description,dureformation,titreformation, this.file,).subscribe(data=>{
       if(data.status == true){
         Swal.fire({
           heightAuto: false,
@@ -149,6 +170,85 @@ export class FormationComponent implements OnInit {
 			},
 		);
 	}
+
+  
+  open2(content: any,idformation:any) {
+    // alert(idformation)
+
+this.serviceFormation.lesFormationsParId(idformation).subscribe(data=>{
+  this.uneFormation = data
+  this.idFor = this.uneFormation.idformation
+  this.maPhoto = this.uneFormation.file
+  this.monTitre = this.uneFormation.titreformation;
+  this.monDuree = this.uneFormation.dureformation;
+  this.maDesc = this.uneFormation.description;
+  this.monUrl = this.uneFormation.urlformation;
+  this.monEtat = this.uneFormation.etat
+
+
+  console.log("Titre = "+this.monTitre)
+
+})
+
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+			(result) => {
+				this.closeResult = `Closed with: ${result}`;
+			},
+			(reason) => {
+				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+			},
+		);
+	}
+
+  // =============================================================================== Modifier ================
+  Modifier(idformation:any){
+// alert("ID "+idformation)
+    this.serviceFormation.lesFormationsParId(idformation).subscribe(data=>{
+      this.uneFormation = data
+    })
+ 
+    if(this.form.titreformations2 == undefined){
+      this.form.titreformations2 = this.uneFormation.titreformation
+    }
+    if(this.form.etat == undefined){
+      this.form.etat = this.uneFormation.etat
+    }
+    if(this.form.urlformation2 == undefined){
+      this.form.urlformation2 = this.uneFormation.urlformation
+    }
+    if(this.form.description2 == undefined){
+      this.form.description2 = this.uneFormation.description
+    }
+    if(this.form.dureformation2 == undefined){
+      this.form.dureformation2 = this.uneFormation.dureformation
+    }
+
+
+    console.log("Image = "+this.file2)
+
+    this.serviceFormation.modifierFormation(idformation, this.form.etat,this.form.urlformation2,this.form.description2,this.form.dureformation2,this.form.titreformations2).subscribe(data=>{
+      if(data.status == true){
+        Swal.fire({
+          heightAuto: false,
+          icon: 'success',
+          text: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        this.mesformations();
+
+      }
+      else{
+        Swal.fire({
+          heightAuto: false,
+          icon: 'warning',
+          text: data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    })
+  }
 
 	private getDismissReason(reason: any): string {
 		if (reason === ModalDismissReasons.ESC) {
