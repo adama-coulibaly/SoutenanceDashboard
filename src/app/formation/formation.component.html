@@ -92,7 +92,7 @@
         <div class="col-md-6 py-2">
           <!-- <span>ou utilisé ces services</span> -->
           <input type="text" placeholder="Titre de la formation" required="true" name="titreformation"
-            [(ngModel)]="form.titreformation" minlength="5" maxlength="50" #titreformation="ngModel"
+            [(ngModel)]="form.titreformation" minlength="5"  #titreformation="ngModel"
             class="form-control" />
           <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
           <div class="alertes" role="alert" *ngIf="titreformation.errors && f.submitted">

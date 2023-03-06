@@ -2,16 +2,23 @@
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit2()" #f="ngForm" novalidate>
-			<h4>Inscription</h4>
+			<img src="../../assets/img/logo1.png" width="50%" alt="" srcset=""> 
+			<!-- <h4>My Farmed</h4> -->
+
+			<div class="description">
+				<p>My farmed est une application de suivie de production, de commercialisation des produits avicoles, de 
+					de communication entre fermier et de formation dans le domaine de l'aviculture.
+				</p>
+			</div>
 			<!-- <div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div> -->
 			<!-- <span>ou utilisé ces services</span> -->
-			<input type="text" placeholder="Nom" required="true" name="nom" [(ngModel)]="form.nom"  minlength="3" maxlength="20"     #nom="ngModel" />
+			<!-- <input type="text" placeholder="Nom" required="true" name="nom" [(ngModel)]="form.nom"  minlength="3" maxlength="20"     #nom="ngModel" /> -->
 			  <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
-			  <div
+			  <!-- <div
 			  class="alertes"
 			  role="alert"
 			  *ngIf="nom.errors && f.submitted">
@@ -19,16 +26,16 @@
 			</div>
 
 			<input type="text" placeholder="Prénom" required="true" name="prenom" [(ngModel)]="form.prenom"  minlength="3" maxlength="20"
-            #prenom="ngModel"/>
+            #prenom="ngModel"/> -->
 			     <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
-				 <div
+				 <!-- <div
 				 class="alertes"
 				 role="alert"
 				 *ngIf="prenom.errors && f.submitted">
 				 Prénom d'utilisateur est obligatoire !
-			   </div>
+			   </div> -->
 
-
+<!-- 
 			<input type="tel" placeholder="+223 70 44 67 11"  defaultCountryiso="ml" modalSearchPlaceholder="Rechercher ici" modalCloseText="fermer" modalTitle="Votre pays"
 			name="telph"  #telph="ngModel" [(ngModel)]="form.telph" maxlength="13"/>
 
@@ -42,30 +49,30 @@
 			role="alert"
 			*ngIf="emails.errors && f.submitted">
 			Email est obligatoire !
-		  </div>
+		  </div> -->
 
 
-			<input type="text" placeholder="adresse" required="true" name="adresse" [(ngModel)]="form.adresse"  minlength="3" maxlength="20"
+			<!-- <input type="text" placeholder="adresse" required="true" name="adresse" [(ngModel)]="form.adresse"  minlength="3" maxlength="20"
             #adresse="ngModel"/>
 			<div
          class="alertes"
          role="alert"
          *ngIf="adresse.errors && f.submitted">
           Veuillez donner une adresse 
-       </div>
+       </div> -->
 
 
 
-			<input type="password" placeholder="Password" required="true" name="passord" [(ngModel)]="form.password"  minlength="3" maxlength="20"
+			<!-- <input type="password" placeholder="Password" required="true" name="passord" [(ngModel)]="form.password"  minlength="3" maxlength="20"
             #passord="ngModel"/>
 			<div
 			class="alertes"
 			role="alert"
 			*ngIf="passord.errors && f.submitted">
 			 Mot de passe obligatoire
-		  </div>
+		  </div> -->
 
-			<button>Inscription</button>
+			<p>copyright-my-farmed-2023</p>
 		</form>
 	</div>
 
@@ -81,7 +88,7 @@
               </div>
 
             <div class="monimage" align="center"> <img src="../../assets/img/logo1.png" width="30%" alt="" srcset=""> </div>
-			<h1>Connexion</h1>
+			<h3>Connexion</h3>
 			<!-- <div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -113,7 +120,7 @@
              </div>
            </div>
             
-            <a href="#">Mot de passe oublié ?</a>
+            <!-- <a href="#">Mot de passe oublié ?</a> -->
 			<button>Connexion</button>
 		</form>
 	</div>
@@ -129,7 +136,7 @@
 				<h1>Salut l'ami !</h1>
 				<p>Entrez vos données personnelles et commencez votre voyage avec nous
                 </p>
-				<button class="ghost" id="signUp">Inscription</button>
+				<button class="ghost" id="signUp">Description</button>
 			</div>
 		</div>
 	</div>

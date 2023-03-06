@@ -48,6 +48,9 @@ const API_URL = 'http://localhost:8080/';
   }
 
   
-
+  // ICI ON BANI UN USER
+  banirUser(user: any, id: any): Observable<any> {
+    return this.http.patch(`http://localhost:8080/api/auth/banirUser/${id}`, user)
+  }
   
 }

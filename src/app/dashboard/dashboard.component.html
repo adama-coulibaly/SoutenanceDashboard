@@ -84,7 +84,7 @@
                                     <td *ngIf="users.roles[0].name == 'ROLE_SUPER_ADMIN' ">Super admin</td>
                                     <td *ngIf="users.roles[0].name == 'ROLE_USER' ">Utilisateur</td>
                                     <td *ngIf="users.roles[0].name == 'ROLE_ADMIN' ">Admin</td>
-                                    <td><button>Banir</button></td>
+                                    <td><button (click)="banirUser(users.id)">Banir</button></td>
                                 </tr>
                             </tbody>
                         </table>
